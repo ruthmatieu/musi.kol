@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.homepage {
+    /* background-image: url("./assets/images/mass-people-concert.png"); */
+    background-color: #282828;
+    background-repeat: no-repeat, repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+
+input, select, textarea{
+    color: #000000;
+}
+
+input::placeholder{
+    color: gray;
+  }
