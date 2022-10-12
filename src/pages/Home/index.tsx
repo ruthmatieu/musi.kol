@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import useSpotify from "../../hooks/useSpotify";
-import SearchForm from "../SearchForm";
+import SearchForm from "../../components/SearchForm";
 import SearchResults from "../SearchResults";
 import bgImage from "../../assets/images/mass-people-concert.png";
 
