@@ -1,5 +1,5 @@
 import { Dispatch, FormEvent, SetStateAction } from "react";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../NullMessage";
 import SearchForm from "../SearchForm";
 type Props = {
     artists: any[];

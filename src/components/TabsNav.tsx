@@ -9,11 +9,18 @@ type Props = {
     artists: any[];
     token: string;
     searchArtists: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+    recentlyPlayed: any[];
     setSearchKey: Dispatch<SetStateAction<string>>;
 }
 
 
-const TabsNav = ({artists, token, searchArtists, setSearchKey} : Props) => {
+const TabsNav = ({
+    artists, 
+    token, 
+    searchArtists, 
+    setSearchKey, 
+    recentlyPlayed
+} : Props) => {
     const [activeTab, setActiveTab] = useState("tab1");
 
     const displayRecentlyPlayedTab = () => {
@@ -46,7 +53,7 @@ const TabsNav = ({artists, token, searchArtists, setSearchKey} : Props) => {
             </ul>
         <div className="outlet">
             {/* {activeTab === "tab1" ? <RecentlyPlayed/> : <DisplaySearchResults artists={artists} token={token} searchArtists={searchArtists} setSearchKey={setSearchKey}/>} */}
-            {activeTab === "tab1" && <RecentlyPlayed token={token} recentlyPlayedActive={activeTab} thirdTabActive={activeTab}/>}
+            {activeTab === "tab1" && <RecentlyPlayed token={token} recentlyPlayedActive={activeTab} thirdTabActive={activeTab} recentlyPlayed={recentlyPlayed}/>}
             {activeTab === "tab2" && <DisplaySearchResults artists={artists} token={token} searchArtists={searchArtists} setSearchKey={setSearchKey} thirdTabActive={activeTab} recentlyPlayedActive={activeTab}/>}
             {activeTab === "tab3" && <ThirdTab token={token} thirdTabActive={activeTab} recentlyPlayedActive={activeTab}/>}
         </div>

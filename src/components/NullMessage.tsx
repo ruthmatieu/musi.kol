@@ -3,7 +3,7 @@ interface Props {
     recentlyPlayedActive: string;
     thirdTabActive: string;
 }
-const ErrorMessage = ({recentlyPlayedActive, thirdTabActive} :Props) => {
+const NullMessage = ({recentlyPlayedActive, thirdTabActive} :Props) => {
     return (
         <div className="mt-60">
             
@@ -23,4 +23,4 @@ const ErrorMessage = ({recentlyPlayedActive, thirdTabActive} :Props) => {
     )
 }
 
-export default ErrorMessage;
+export default NullMessage;

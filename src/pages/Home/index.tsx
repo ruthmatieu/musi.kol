@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import axios from "axios";
 import useSpotify from "../../hooks/useSpotify";
 import SearchForm from "../../components/SearchForm";
@@ -10,6 +10,7 @@ const Home = () => {
 
     const [searchKey, setSearchKey] = useState("");
     const [artists, setArtists] = useState<any[]>([]);
+    const [recentlyPlayed, setRecentlyPlayed] = useState<any[]>([]);
 
 
     const searchArtists = async (e: FormEvent<HTMLFormElement>) => {
@@ -23,9 +24,24 @@ const Home = () => {
                 type: "album"
             }
         })
-        console.log(data.albums.items)
         setArtists(data.albums.items)
     }
+
+    const getRecentlyPlayed = async () => {
+        //e.preventDefault()
+        const {data} = await axios.get("https://api.spotify.com/v1/me/player/recently-played", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        setRecentlyPlayed(data);
+    }
+    
+    console.log('recently played: ',recentlyPlayed)
+
+    useEffect(() => {
+        getRecentlyPlayed();
+    },[])
 
     return (
         <div className={`homepage text-center text-stone-200 ${!token ? "grid items-center h-screen": ""} ${artists.length=== 0 ? "h-screen" : "h-full"}`} style={{backgroundImage: !token ? `url(${bgImage})` : 'none'}}>
@@ -40,7 +56,7 @@ const Home = () => {
                     }
                     <br/>
                     
-                    {token ? <SearchResults artists={artists} token={token} searchArtists={searchArtists} setSearchKey={setSearchKey}/> : ""}
+                    {token ? <SearchResults artists={artists} token={token} searchArtists={searchArtists} setSearchKey={setSearchKey} recentlyPlayed={recentlyPlayed}/> : ""}
                 </div>
         </div>
     )

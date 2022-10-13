@@ -1,4 +1,4 @@
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "../NullMessage";
 
 type Props = {
     token: string;
