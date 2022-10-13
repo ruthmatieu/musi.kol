@@ -1,14 +1,11 @@
 import { Routes, Route, Link } from "react-router-dom";
 import useSpotify from "./hooks/useSpotify";
 import Home from "./pages/Home";
-import SearchResults from "./pages/SearchResults";
 import Logout from "./pages/Logout";
 
-type Props = {
-    artists: any[];
-}
 
-const App = ({artists}:Props) => {
+
+const App = () => {
     const [token] = useSpotify();
 
     return (
@@ -24,7 +21,6 @@ const App = ({artists}:Props) => {
             </header>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/my-account" element={<SearchResults artists={artists}/>} />
             </Routes>
         </div>
     )

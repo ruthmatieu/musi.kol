@@ -28,7 +28,7 @@ const Home = () => {
     }
 
     return (
-        <div className={`homepage text-center text-stone-200 h-screen ${token ? "h-screen" : "grid items-center h-screen"}`} style={{backgroundImage: !token ? `url(${bgImage})` : 'none'}}>
+        <div className={`homepage text-center text-stone-200 ${!token ? "grid items-center h-screen": ""} ${artists.length=== 0 ? "h-screen" : "h-full"}`} style={{backgroundImage: !token ? `url(${bgImage})` : 'none'}}>
                 <div>
                     {!token ?  
                     (<><h1 className="text-6xl font-bold sm:text-8xl">musi.kol</h1><p className="mb-6">Start streaming your favorites now</p></>): ""}
@@ -39,12 +39,8 @@ const Home = () => {
                     : ""
                     }
                     <br/>
-                    {
-                    token ? 
-                        <SearchForm searchArtists={searchArtists} setSearchKey={setSearchKey}/>
-                        : ""
-                    }
-                    {token ? <SearchResults artists={artists}/>: ""}
+                    
+                    {token ? <SearchResults artists={artists} token={token} searchArtists={searchArtists} setSearchKey={setSearchKey}/> : ""}
                 </div>
         </div>
     )

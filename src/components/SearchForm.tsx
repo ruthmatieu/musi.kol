@@ -15,7 +15,7 @@ const SearchForm = ({searchArtists, setSearchKey}:Props) => {
                     placeholder="i.e. BTS"
                     onChange={e => setSearchKey(e.target.value)}
                 />
-                <button type="submit">Search</button>
+                <button type="submit">Go</button>
             </span>
         </form>
     )
