@@ -8,7 +8,7 @@ type Props = {
 const SearchForm = ({searchArtists, setSearchKey}:Props) => {
 
     return (
-        <form onSubmit={searchArtists} className="mt-24">
+        <form onSubmit={searchArtists} className="mt-4">
             <span className="bg-white py-4 px-10 rounded-full">
                 <input 
                     type="text"
